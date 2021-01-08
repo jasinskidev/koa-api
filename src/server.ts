@@ -3,7 +3,7 @@ import logger from 'koa-logger';
 import bodyParser from 'koa-bodyparser';
 import BasicRouter from './routes/Basic';
 import ErrorHandler from './helpers/ErrorHandler';
-import { ServerConfig } from './../config/server.d';
+import { ServerConfig } from '../config/server.d';
 
 class Server extends Koa {
   private config: ServerConfig;

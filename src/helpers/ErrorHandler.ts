@@ -5,7 +5,7 @@ class ErrorHandler {
 
   public setup(): void {
     this.server.on('error', (err) => {
-      console.error(err);
+      console.error(err.message);
     })
   }
 }

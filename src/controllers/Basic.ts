@@ -1,7 +1,7 @@
-import { BaseContext } from "koa";
+import { BaseContext, DefaultContext } from "koa";
 
 class BasicController {
-  public async check(ctx: BaseContext): Promise<void> {
+  public async check(ctx: DefaultContext): Promise<void> {
     ctx.body = 'OK';
   }
 
