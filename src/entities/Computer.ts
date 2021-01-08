@@ -7,10 +7,10 @@ import {
   OneToOne,
 } from "typeorm";
 import { Length, IsInt, Min, Max, IsDate } from "class-validator";
-import { Employee } from './Employee';
+import Employee from './Employee';
 
 @Entity("computers")
-export class Computer {
+class Computer {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
@@ -39,3 +39,5 @@ export class Computer {
   @IsDate()
   createdAt!: Date
 }
+
+export default Computer;

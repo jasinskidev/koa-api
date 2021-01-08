@@ -8,11 +8,11 @@ import {
   JoinColumn
 } from "typeorm";
 import { IsDate, IsEmail, IsInt, Length } from "class-validator";
-import { Computer } from './Computer';
-import { Department } from './Department';
+import Computer from './Computer';
+import Department from './Department';
 
 @Entity("employees")
-export class Employee {
+class Employee {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
@@ -48,3 +48,5 @@ export class Employee {
   @IsDate()
   createdAt!: Date
 }
+
+export default Employee;

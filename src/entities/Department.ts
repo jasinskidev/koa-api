@@ -6,10 +6,10 @@ import {
   OneToMany
 } from "typeorm";
 import { IsDate, IsEmail, IsInt, Length, Max, Min } from "class-validator";
-import { Employee } from './Employee';
+import Employee from './Employee';
 
 @Entity("departments")
-export class Department {
+class Department {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
@@ -39,3 +39,5 @@ export class Department {
   @IsDate()
   createdAt!: Date
 }
+
+export default Department;
