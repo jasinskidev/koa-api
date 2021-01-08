@@ -4,10 +4,10 @@ dotenv.config();
 
 const {
   PORT,
-  HOST,
+  DATABASE_URL,
 } = process.env;
 
 export default {
   port: PORT || 3000,
-  host: HOST || 'localhost',
+  connectionUrl: DATABASE_URL,
 }
