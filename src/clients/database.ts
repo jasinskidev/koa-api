@@ -2,14 +2,9 @@ import "reflect-metadata";
 import { createConnection } from 'typeorm';
 
 class DatabaseClient {
-  constructor(private connectionString?: string) {}
-
   async setupDatabase(): Promise<void> {
     try {
-      await createConnection({
-        type: 'postgres',
-        url: this.connectionString,
-      });
+      await createConnection();
     } catch(err) {
       console.error(err);
     }

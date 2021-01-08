@@ -19,7 +19,7 @@ class Server extends Koa {
   }
 
   private setupDatabase(): void {
-    const databaseClient = new DatabaseClient(this.config.connectionUrl);
+    const databaseClient = new DatabaseClient();
     databaseClient.setupDatabase();
   }
 

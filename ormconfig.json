@@ -1,5 +1,6 @@
 {
-   "synchronize": true,
+   "type": "postgres",
+   "synchronize": false,
    "logging": false,
    "entities": [
       "src/entity/**/*.ts"
@@ -7,6 +8,7 @@
    "migrations": [
       "src/migration/**/*.ts"
    ],
+   "migrationsTableName": "typeorm_migrations",
    "subscribers": [
       "src/subscriber/**/*.ts"
    ],
