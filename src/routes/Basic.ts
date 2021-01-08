@@ -12,6 +12,7 @@ class BasicRoutes extends Router {
 
   private prepareRoutes() {
     this
+      .get('/', this.controller.root)
       .get('/check', this.controller.check)
       .get('/robots.txt', this.controller.robots);
   }

@@ -1,6 +1,10 @@
 import { BaseContext, DefaultContext } from "koa";
 
 class BasicController {
+  public async root(ctx: DefaultContext): Promise<void> {
+    ctx.body = 'Welcome to TypeScript REST API';
+  }
+
   public async check(ctx: DefaultContext): Promise<void> {
     ctx.body = 'OK';
   }
