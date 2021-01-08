@@ -7,6 +7,7 @@ import {
   OneToOne,
   JoinColumn
 } from "typeorm";
+import { IsDate, IsEmail, IsInt, Length } from "class-validator";
 import { Computer } from './Computer';
 import { Department } from './Department';
 
@@ -15,16 +16,21 @@ export class Employee {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column("varchar", { length: 50 })
+  @Column()
+  @Length(10, 30)
   firstName!: string
 
-  @Column("varchar", { length: 50 })
+  @Column()
+  @Length(10, 30)
   lastName!: string
 
-  @Column("varchar", { length: 12 })
+  @Column()
+  @Length(9, 15)
   telephone!: string
 
-  @Column("varchar", { length: 30 })
+  @Column()
+  @Length(5, 50)
+  @IsEmail()
   email!: string
 
   @ManyToOne(() => Department, department => department.employees)
@@ -35,8 +41,10 @@ export class Employee {
   computerId!: Computer
 
   @Column()
+  @IsInt()
   salary!: number
 
   @CreateDateColumn()
+  @IsDate()
   createdAt!: Date
 }

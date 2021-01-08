@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   OneToMany
 } from "typeorm";
+import { IsDate, IsEmail, IsInt, Length, Max, Min } from "class-validator";
 import { Employee } from './Employee';
 
 @Entity("departments")
@@ -12,21 +13,29 @@ export class Department {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column("varchar", { length: 30 })
+  @Column()
+  @Length(10, 20)
   name!: string
 
   @Column()
+  @IsInt()
+  @Min(0)
+  @Max(15)
   floor!: number
 
-  @Column("varchar", { length: 50 })
+  @Column()
+  @Length(5, 50)
   description!: string
 
-  @Column("varchar", { length: 30 })
+  @Column()
+  @Length(5, 50)
+  @IsEmail()
   email!: string
 
   @OneToMany(() => Employee, employee => employee.departmentId)
   employees!: Employee[]
 
   @CreateDateColumn()
+  @IsDate()
   createdAt!: Date
 }

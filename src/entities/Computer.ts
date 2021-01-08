@@ -6,6 +6,7 @@ import {
   Generated,
   OneToOne,
 } from "typeorm";
+import { Length, IsInt, Min, Max, IsDate } from "class-validator";
 import { Employee } from './Employee';
 
 @Entity("computers")
@@ -17,18 +18,24 @@ export class Computer {
   @Generated("uuid")
   serialNumber!: string
 
-  @Column("varchar", { length: 50 })
+  @Column()
+  @Length(10, 20)
   cpu!: string
 
-  @Column("varchar", { length: 50 })
+  @Column()
+  @Length(10, 20)
   gpu!: string
 
   @Column()
+  @IsInt()
+  @Min(1)
+  @Max(100)
   ram!: number
 
   @OneToOne(() => Employee)
   employeeId!: Employee
 
   @CreateDateColumn()
+  @IsDate()
   createdAt!: Date
 }
