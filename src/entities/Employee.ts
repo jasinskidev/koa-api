@@ -34,11 +34,11 @@ class Employee {
   email!: string
 
   @ManyToOne(() => Department, department => department.employees)
-  departmentId!: Department
+  department!: Department
 
   @OneToOne(() => Computer)
   @JoinColumn()
-  computerId!: Computer
+  computer!: Computer
 
   @Column()
   @IsInt()

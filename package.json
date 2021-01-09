@@ -8,7 +8,7 @@
     "dev": "nodemon",
     "start": "npm run build && node build/index.js",
     "build": "rimraf ./build && tsc",
-    "create-migration": "ts-node ./node_modules/typeorm/cli migration:create",
+    "generate-migration": "ts-node ./node_modules/typeorm/cli migration:generate",
     "revert-migration": "ts-node ./node_modules/typeorm/cli migration:revert",
     "run-migrations": "ts-node ./node_modules/typeorm/cli migration:run"
   },

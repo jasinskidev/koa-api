@@ -32,7 +32,7 @@ class Department {
   @IsEmail()
   email!: string
 
-  @OneToMany(() => Employee, employee => employee.departmentId)
+  @OneToMany(() => Employee, employee => employee.department)
   employees!: Employee[]
 
   @CreateDateColumn()

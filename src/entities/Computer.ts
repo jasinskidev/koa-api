@@ -33,7 +33,7 @@ class Computer {
   ram!: number
 
   @OneToOne(() => Employee)
-  employeeId!: Employee
+  employee!: Employee
 
   @CreateDateColumn()
   @IsDate()
