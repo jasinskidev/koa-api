@@ -1,7 +1,7 @@
 import Application from 'koa';
 import logger from 'koa-logger';
 import bodyParser from 'koa-bodyparser';
-import Router from './routes';
+import RESTRouter from './api/rest/routes';
 import ErrorHandler from './helpers/ErrorHandler';
 import DatabaseClient from './clients/database';
 import { ServerConfig } from '../config/server.d';
@@ -25,8 +25,8 @@ class Server {
   }
 
   private configureRouting() {
-    const router = new Router(this.app);
-    router.setupRoutes();
+    const restRouter = new RESTRouter(this.app);
+    restRouter.setupRoutes();
   }
 
   private setupErrorHandling() {

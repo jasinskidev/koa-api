@@ -1,5 +1,5 @@
 import Application from 'koa';
-import EmployeeRouter from "../routes/EmployeeRouter";
+import EmployeeRouter from "./EmployeeRouter";
 import BasicRouter from "./BasicRouter";
 
 class MainRouter {
