@@ -1,16 +1,17 @@
-import Koa from 'koa';
+import Application from 'koa';
 import logger from 'koa-logger';
 import bodyParser from 'koa-bodyparser';
-import BasicRouter from './routes/Basic';
+import Router from './routes';
 import ErrorHandler from './helpers/ErrorHandler';
 import DatabaseClient from './clients/database';
 import { ServerConfig } from '../config/server.d';
 
-class Server extends Koa {
+class Server {
   private config: ServerConfig;
-  
-  constructor(config: ServerConfig) {
-    super();
+  private app: Application;
+
+  constructor(app: Application, config: ServerConfig) {
+    this.app = app;
     this.config = config;
     this.setupMiddlewares();
     this.setupDatabase();
@@ -18,28 +19,28 @@ class Server extends Koa {
     this.configureRouting();
   }
 
-  private setupDatabase(): void {
+  private setupDatabase() {
     const databaseClient = new DatabaseClient();
     databaseClient.setupDatabase();
   }
 
-  private configureRouting(): void {
-    const basicRoutes = new BasicRouter();
-    this.use(basicRoutes.routes());
+  private configureRouting() {
+    const router = new Router(this.app);
+    router.setupRoutes();
   }
 
-  private setupErrorHandling(): void {
-    const errorHandler = new ErrorHandler(this);
+  private setupErrorHandling() {
+    const errorHandler = new ErrorHandler(this.app);
     errorHandler.setup();
   }
 
-  private setupMiddlewares(): void {
-    this.use(logger());
-    this.use(bodyParser());
+  private setupMiddlewares() {
+    this.app.use(logger());
+    this.app.use(bodyParser());
   }
 
   public start(): void {
-    this.listen(this.config.port);
+    this.app.listen(this.config.port);
     console.log(`Server started on port ${this.config.port}`);
   }
 }

@@ -1,4 +1,4 @@
-import { BaseContext, DefaultContext } from "koa";
+import { DefaultContext } from "koa";
 
 class BasicController {
   public async root(ctx: DefaultContext): Promise<void> {
@@ -9,7 +9,7 @@ class BasicController {
     ctx.body = 'OK';
   }
 
-  public async robots(ctx: BaseContext): Promise<void> {
+  public async robots(ctx: DefaultContext): Promise<void> {
     ctx.body = 'User-agent: *\nDisallow: /';
   }
 }

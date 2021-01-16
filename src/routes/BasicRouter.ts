@@ -1,7 +1,7 @@
 import Router from 'koa-router';
-import BasicController from '../controllers/Basic';
+import BasicController from '../controllers/BasicController';
 
-class BasicRoutes extends Router {
+class BasicRouter extends Router {
   private controller;
 
   constructor() {
@@ -18,4 +18,4 @@ class BasicRoutes extends Router {
   }
 }
 
-export default BasicRoutes;
+export default BasicRouter;
