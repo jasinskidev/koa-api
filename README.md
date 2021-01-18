@@ -1,4 +1,4 @@
-# koa-rest-api
+# office-management-api
 
 REST API made for purpose of learning
 
